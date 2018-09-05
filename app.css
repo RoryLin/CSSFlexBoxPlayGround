@@ -1,0 +1,87 @@
+
+body {
+  padding-top: 15px;
+}
+
+.flexboxes {
+  border: solid 10px #333;
+  position: relative;
+  display: flex;
+  height: 500px;
+  margin: 50px;
+  padding: 0;
+}
+.flexboxes.column .axis.main, .flexboxes.column-reverse .axis.main {
+  width: 0px;
+  height: 100%;
+}
+.flexboxes.column .axis.main label, .flexboxes.column-reverse .axis.main label {
+  top: -50px;
+  right: initial;
+}
+.flexboxes.column .axis.sub, .flexboxes.column-reverse .axis.sub {
+  width: 100%;
+  height: 0px;
+}
+.flexboxes.column .axis.sub label, .flexboxes.column-reverse .axis.sub label {
+  right: -120px;
+  top: initial;
+}
+
+.box {
+  width: 15%;
+  height: 15%;
+  background-color: #fff;
+  font-size: 40px;
+}
+
+.axis {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+.axis label {
+  position: absolute;
+  right: -120px;
+  white-space: nowrap;
+}
+
+.axis.main {
+  width: 100%;
+  height: 0px;
+  border: solid 2px red;
+  color: red;
+}
+
+.axis.sub {
+  width: 0px;
+  height: 100%;
+  border: solid 2px MediumBlue;
+  color: MediumBlue;
+}
+.axis.sub label {
+  position: absolute;
+  top: -50px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  border: solid 2px #666;
+  color: #666;
+  position: relative;
+  z-index: 100;
+}
+.box {
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.settings {
+  background-color: #fff;
+  margin: 50px;
+}

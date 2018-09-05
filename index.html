@@ -1,9 +1,82 @@
 <html>
-    <style>
-
-    </style>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel="stylesheet" href="app.css">
+    </head>
     <body>
-        <h1>CSS Flexbox Visual Playground</h1>
+        <h1 class="text-center">CSS Flexbox Visual Playground</h1>
         <hr>
+        <div id="app" class="container">
+            <div class="flexboxes" :style="getStyle" :class="direction">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="axis main">
+                    <label>Justify</label>
+                </div>
+                <div class="axis sub">
+                    <label>Align</label>
+                </div>
+            </div>
+            <div class="settings"><br/>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label>flex-direction</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="btn-group">
+                            <button class="btn btn-secondary" v-for="d in values.direction" @click="direction=d" :class="{active: direction==d}">{{d}}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label>justify-content</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="btn-group">
+                            <button class="btn btn-secondary" v-for="d in values.justify" @click="justify=d" :class="{active: justify==d,'btn-warning': d.indexOf('space')!=-1}">{{d}}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label>align-items</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="btn-group">
+                            <button class="btn btn-secondary" v-for="d in values.align" @click="align=d" :class="{active: align==d,'btn-warning': d.indexOf('space')!=-1}">{{d}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+        <script>
+            var vm = new Vue({
+                el: "#app",
+                data: {
+                    direction: "row",
+                    justify: "center",
+                    align: "center",
+                    values: {
+                    direction: ["row","column","row-reverse","column-reverse"],
+                    justify: ["flex-start","center","flex-end","space-around","space-between","space-evenly"],
+
+                    align: ["flex-start","center","flex-end","space-around","space-between","space-evenly"]
+                    }
+                },
+                computed: {
+                    getStyle(){
+                    return {
+                        "flex-direction": this.direction,
+                        "justify-content": this.justify,
+                        "align-items": this.align}
+                    }
+                }
+            })
+        </script>
     </body>
 </html>
